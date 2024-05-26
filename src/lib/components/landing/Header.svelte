@@ -5,13 +5,15 @@
 	<div class="content">
 		<div class="logo-wrapper">
 			<div class="logo">
-				<img alt="logo" src="/logo.png"/>
+				<a href='/'>
+					<img alt="logo" src="/logo.png"/>
+				</a>
 			</div>
 		</div>
 		<div class="links-wrapper">
-			<a href="">About</a>
-			<a href="">Catalog</a>
-			<a href="">News</a>
+			<a href="/about">About</a>
+			<a href="/catalog">Catalog</a>
+			<a href="/news">News</a>
 		</div>
 	</div>
 </header>
@@ -21,8 +23,12 @@
 		color: white;
 		display: flex;
 		justify-content: center;
+		align-items: center;
 		width: 100vw;
-		height: 100px;
+		height: 80px;
+		position: fixed;
+		top: 0;
+		background: #1b1b1d;
 	}
 
 	.content {
@@ -30,18 +36,21 @@
 		width: 100%;
 		justify-content: space-between;
 		align-items: center;
-		max-width: 850px;
+		max-width: 1050px;
+		padding: 0 20px;
+
+		.logo-wrapper {
+			width: 150px;
+			img {
+				width: 100%;
+			}
+		}
 	}
 
 	.links-wrapper {
 		display: flex;
 		gap: 25px;
 		align-items: center;
-	}
-
-	.cta {
-		background: linear-gradient(180deg, #7408DF 0%, #560E9C 100%);
-		border-radius: 9999px;
-		padding: 6px 30px;
+		color: whitesmoke;
 	}
 </style>
