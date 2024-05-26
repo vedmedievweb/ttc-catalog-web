@@ -10,11 +10,7 @@
 				</a>
 			</div>
 		</div>
-		<div class="links-wrapper">
-			<a href="/about">About</a>
-			<a href="/catalog">Catalog</a>
-			<a href="/news">News</a>
-		</div>
+		<div class="links-wrapper"></div>
 	</div>
 </header>
 

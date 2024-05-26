@@ -63,7 +63,7 @@
 	</article>
 {/if}
 
-<style>
+<style lang='scss'>
 	img {
 		max-width: 100%;
 		height: auto;
@@ -84,5 +84,8 @@
 
 	section {
 		margin-top: 1rem;
+		:global(img) {
+			opacity: 1;
+		}
 	}
 </style>

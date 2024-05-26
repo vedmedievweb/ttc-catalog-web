@@ -205,7 +205,7 @@
 					<tbody>
 					{#each catalog as item}
 						<tr>
-							<td><a href={`/catalog/${item.id}`}>{item.id}</a></td>
+							<td><a href={`/${item.id}`}>{item.id}</a></td>
 							<td>{item.load_category}</td>
 							<td>{item.load_type}</td>
 							<td>
@@ -327,6 +327,9 @@
 			overflow: hidden;
 			font-size: 14px;
 			color: white;
+			:global(img) {
+				opacity: 1;
+			}
 		}
 
 		tr {
