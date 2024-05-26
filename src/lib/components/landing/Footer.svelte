@@ -1,0 +1,11 @@
+<script lang="ts">
+
+</script>
+
+<footer>
+
+</footer>
+
+<style lang="scss">
+
+</style>
