@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { Images } from "svelte-images";
-	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
+ 	import { browser } from '$app/environment';
+	let Images;
 
 	export let data: {
 		id: number;
@@ -14,6 +15,12 @@
 	const { id, load_category, load_type, images, industry_images, special_remarks, supporting_info } = data || {};
 	const renderImages = images ? JSON.parse(images).map(item => ({src: item, alt: 'image'})) : null;
 	const renderIndustryImages = industry_images ? JSON.parse(industry_images).map(item => ({src: item, alt: 'image'})) : null;
+	onMount(async () => {
+		if (browser) {
+			const ImagesLib = await import("svelte-images");
+			Images = ImagesLib.Images;
+		}
+	})
 </script>
 
 {#if id}
@@ -22,14 +29,14 @@
 		<p><strong>Category:</strong> {load_category}</p>
 		<p><strong>Type:</strong> {load_type}</p>
 
-		{#if renderImages && browser}
+		{#if renderImages && browser && Images}
 			<section>
 				<h2>Images</h2>
 				<Images images={renderImages} />
 			</section>
 		{/if}
 
-		{#if renderIndustryImages && browser}
+		{#if renderIndustryImages && browser && Images}
 			<section>
 				<h2>Industry Images</h2>
 				<Images images={renderIndustryImages} />

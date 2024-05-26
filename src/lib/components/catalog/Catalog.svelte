@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
-	import { Images } from "svelte-images";
+	import { browser } from '$app/environment';
 	import LoadingSpinner from '../common/LoadingSpinner.svelte';
 	import ArrowDown from '../icons/ArrowDown.svelte';
 
+	let Images;
 	let catalog = [];
 	let loadTypes = [];
 	let loadCategories = [];
@@ -78,10 +79,14 @@
 		fetchCatalog();
 	};
 
-	onMount(() => {
+	onMount(async () => {
 		fetchCatalog();
 		fetchLoadTypes();
 		fetchLoadCategories();
+		if (browser) {
+			const ImagesLib = await import("svelte-images");
+			Images = ImagesLib.Images;
+		}
 	});
 </script>
 
@@ -205,14 +210,14 @@
 							<td>{item.load_type}</td>
 							<td>
 								{#key item.images}
-									{#if item.images}
+									{#if item.images && browser}
 										<Images images={item.images.map(item => ({src: item, alt: 'image'}))} />
 									{/if}
 								{/key}
 							</td>
 							<td>
 								{#key item.industry_images}
-									{#if item.industry_images}
+									{#if item.industry_images && browser}
 										<Images images={item.industry_images.map(item => ({src: item, alt: 'image'}))} />
 									{/if}
 								{/key}
