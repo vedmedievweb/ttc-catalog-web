@@ -13,8 +13,8 @@
 		supporting_info: string;
 	};
 	const { id, load_category, load_type, images, industry_images, special_remarks, supporting_info } = data || {};
-	const renderImages = images ? JSON.parse(images).map(item => ({src: item, alt: 'image'})) : null;
-	const renderIndustryImages = industry_images ? JSON.parse(industry_images).map(item => ({src: item, alt: 'image'})) : null;
+	const renderImages = images ? JSON.parse(images).filter(item => item !== 'null').map(item => ({src: item, alt: 'image'})) : null;
+	const renderIndustryImages = industry_images ? JSON.parse(industry_images).filter(item => item !== 'null').map(item => ({src: item, alt: 'image'})) : null;
 	onMount(async () => {
 		if (browser) {
 			const ImagesLib = await import("svelte-images");
@@ -29,14 +29,14 @@
 		<p><strong>Category:</strong> {load_category}</p>
 		<p><strong>Type:</strong> {load_type}</p>
 
-		{#if renderImages && browser && Images}
+		{#if renderImages?.length && browser && Images}
 			<section>
 				<h2>Images</h2>
 				<Images images={renderImages} />
 			</section>
 		{/if}
 
-		{#if renderIndustryImages && browser && Images}
+		{#if renderIndustryImages?.length && browser && Images}
 			<section>
 				<h2>Industry Images</h2>
 				<Images images={renderIndustryImages} />

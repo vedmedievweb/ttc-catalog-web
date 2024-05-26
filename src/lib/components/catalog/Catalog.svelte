@@ -40,7 +40,11 @@
 		const response = await fetch(`${import.meta.env.VITE_API_URL}/catalog?${params.toString()}`);
 		const { data } = await response.json();
 
-		catalog = data.data.map(item => ({...item, images: JSON.parse(item.images), industry_images: JSON.parse(item.industry_images)}));
+		catalog = data.data.map(item => ({
+			...item,
+			images: JSON.parse(item.images),
+			industry_images: JSON.parse(item.industry_images)
+		}));
 		totalPages = Math.ceil(data.total / limit);
 		isLoading = false;
 	};
@@ -211,14 +215,14 @@
 							<td>
 								{#key item.images}
 									{#if item.images && browser}
-										<Images images={item.images.map(item => ({src: item, alt: 'image'}))} />
+										<Images images={item.images.filter(item => item !== 'null').map(item => ({src: item, alt: 'image'}))} />
 									{/if}
 								{/key}
 							</td>
 							<td>
 								{#key item.industry_images}
 									{#if item.industry_images && browser}
-										<Images images={item.industry_images.map(item => ({src: item, alt: 'image'}))} />
+										<Images images={item.industry_images.filter(item => item !== 'null').map(item => ({src: item, alt: 'image'}))} />
 									{/if}
 								{/key}
 							</td>
