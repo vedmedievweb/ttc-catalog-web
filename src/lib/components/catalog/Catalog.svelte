@@ -200,20 +200,20 @@
 					<tbody>
 					{#each catalog as item}
 						<tr>
-							<td>{item.id}</td>
+							<td><a href={`/catalog/${item.id}`}>{item.id}</a></td>
 							<td>{item.load_category}</td>
 							<td>{item.load_type}</td>
 							<td>
 								{#key item.images}
 									{#if item.images}
-										<Images images={item.images.map(item => ({src: item}))} />
+										<Images images={item.images.map(item => ({src: item, alt: 'image'}))} />
 									{/if}
 								{/key}
 							</td>
 							<td>
 								{#key item.industry_images}
 									{#if item.industry_images}
-										<Images images={item.industry_images.map(item => ({src: item}))} />
+										<Images images={item.industry_images.map(item => ({src: item, alt: 'image'}))} />
 									{/if}
 								{/key}
 							</td>
