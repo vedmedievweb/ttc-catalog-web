@@ -166,6 +166,7 @@
 	<div class="content">
 		<h1>Catalog</h1>
 		<input class="search-input" type="text" placeholder="Search..." bind:value={search} on:input={handleSearch} />
+		<div id="true-nation-button-widget" class="true-nation-search" data-message={search}></div>
 		<div class="table-wrapper">
 			<div class="table-scroller" class:dimmed={isLoading}>
 				{#if isLoading}
@@ -281,6 +282,10 @@
 		flex-direction: column;
 		padding: 20px;
 		gap: 10px;
+
+		.true-nation-search {
+			width: 100%;
+		}
 	}
 	.table-wrapper {
 		flex-grow: 1;
